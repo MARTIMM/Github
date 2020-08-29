@@ -1,0 +1,9 @@
+.directory
+.bundle/*
+.precomp/*
+**/.precomp/*
+Gemfile*
+Old*
+start_jeckyll.sh
+*.log
+t/docs/*
