@@ -2,7 +2,7 @@
 
 - bar_title: "About"
   bar_menu:
-  - title: "About me"
+  - title: "About ..."
     url: "/content-docs/about.html"
   - title: "Change log"
     url: "/content-docs/change-log.html"

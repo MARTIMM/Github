@@ -1,5 +1,5 @@
 ---
-title: title
+title: some title
 #layout: sidebar
 
 nav_menu: default-nav

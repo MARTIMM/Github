@@ -5,11 +5,11 @@ nav_menus:
   - nav_pages:
     - title: "Home"
       url: '/'
-    - title: "Projects"
-      url: "/content-docs/projects.html"
     - title: "About"
       url: "/content-docs/about.html"
 
+#    - title: "Projects"
+#      url: "/content-docs/projects.html"
 #    - title: "Tutorial"
 #    - title: "Examples"
 #      url: "/content-docs/examples.html"

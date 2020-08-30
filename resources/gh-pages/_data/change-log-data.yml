@@ -1,8 +1,8 @@
 
 notes_title: "Release notes for project ..."
+notes_descr: "The latest release notes for this site is shown below"
 
 notes:
 
   - yyy-mm-dd 0.1.0:
     - Setup
-
