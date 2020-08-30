@@ -2,12 +2,15 @@
   "name": "Github",
   "description": "Github tools",
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.1.1",
+  "version": "0.1.3",
   "authors": [ "Marcel Timmerman" ],
   "license": "Artistic-2.0",
   "depends": [ "CPAN::Uploader::Tiny", "JSON::Fast"],
   "perl": "6",
-  "provides": { },
+  "provides": {
+    "Github::Pages": "lib/Github/Pages.pm6",
+    "Github::Resources": "lib/Github/Resources.pm6"
+  },
   "resources": [
     "gh-pages/Gemfile",
     "gh-pages/_config.yml",
@@ -32,8 +35,8 @@
     "gh-pages/_sass/jekyll-theme-tactile.scss",
     "gh-pages/_sass/rouge-base16-dark.scss",
 
-    "gh-pages/assets/css/print.css",
-    "gh-pages/assets/css/style.scss",
+    "gh-pages/assets/css/print.scss",
+    "gh-pages/assets/css/style.css",
 
     "gh-pages/assets/images/body-bg.png",
     "gh-pages/assets/images/highlight-bg.jpg",
