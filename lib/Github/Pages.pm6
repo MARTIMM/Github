@@ -46,8 +46,8 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/_sass/jekyll-theme-tactile.scss",
         "gh-pages/_sass/rouge-base16-dark.scss",
 
-        "gh-pages/assets/css/print.css",
-        "gh-pages/assets/css/style.scss",
+        "gh-pages/assets/css/print.scss",
+        "gh-pages/assets/css/style.css",
 
         "gh-pages/assets/images/body-bg.png",
         "gh-pages/assets/images/highlight-bg.jpg",
@@ -60,12 +60,12 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/content-docs/about.md",
         "gh-pages/content-docs/images/me-1a.png",
         "gh-pages/content-docs/change-log.md"
-  ) -> $rname {
+  ) -> $rname is copy {
     my $fname = $!resources.get-resource($rname);
-    my $path = $fname.IO.dirname;
-    $path ~~ s/^ .*? 'resources/gh-pages' '/'? //;
+    $rname ~~ s/^ .*? 'gh-pages' '/'? //;
+    my $path = $rname.IO.dirname;
     mkdir $path, 0o750 if ?$path and $path.IO !~~ :e;
-    shell "cp $fname {?$path ?? $path !! '.'}";
+    shell "cp $fname $rname";
   }
 
   # check/update or install bundler
