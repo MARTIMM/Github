@@ -23,6 +23,8 @@ method create-gh-pages ( Str $src = 'docs' ) {
   chdir $src;
 
   # create directories and copy content
+  mkdir 'images', 0o750 unless 'images'.IO ~~ :e;
+  
   for ( "gh-pages/Gemfile",
         "gh-pages/_config.yml",
         "gh-pages/404.html",
@@ -31,11 +33,9 @@ method create-gh-pages ( Str $src = 'docs' ) {
 
         "gh-pages/_data/about-nav.yml",
         "gh-pages/_data/about-sidebar.yml",
-        "gh-pages/_data/change-log-data.yml",
         "gh-pages/_data/default-nav.yml",
         "gh-pages/_data/main-sidebar.yml",
 
-        "gh-pages/_includes/changes-section.html",
         "gh-pages/_includes/header-section.html",
         "gh-pages/_includes/sidebar-section.html",
 
@@ -46,20 +46,20 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/_sass/jekyll-theme-tactile.scss",
         "gh-pages/_sass/rouge-base16-dark.scss",
 
-        "gh-pages/assets/css/print.scss",
-        "gh-pages/assets/css/style.css",
+        "gh-pages/assets/css/print.css",
+        "gh-pages/assets/css/style.scss",
 
         "gh-pages/assets/images/body-bg.png",
         "gh-pages/assets/images/highlight-bg.jpg",
         "gh-pages/assets/images/hr.png",
+        "gh-pages/assets/images/me-1a.png",
         "gh-pages/assets/images/octocat-icon.png",
         "gh-pages/assets/images/tar-gz-icon.png",
         "gh-pages/assets/images/top5.png",
         "gh-pages/assets/images/zip-icon.png",
 
-        "gh-pages/content-docs/about.md",
-        "gh-pages/content-docs/images/me-1a.png",
-        "gh-pages/content-docs/change-log.md"
+        "gh-pages/content-docs/About/about.md",
+        "gh-pages/content-docs/About/release-notes.md"
   ) -> $rname is copy {
     my $fname = $!resources.get-resource($rname);
     $rname ~~ s/^ .*? 'gh-pages' '/'? //;
