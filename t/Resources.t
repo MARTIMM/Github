@@ -16,11 +16,9 @@ for (
 
     "gh-pages/_data/about-nav.yml",
     "gh-pages/_data/about-sidebar.yml",
-    "gh-pages/_data/change-log-data.yml",
     "gh-pages/_data/default-nav.yml",
     "gh-pages/_data/main-sidebar.yml",
 
-    "gh-pages/_includes/changes-section.html",
     "gh-pages/_includes/header-section.html",
     "gh-pages/_includes/sidebar-section.html",
 
@@ -37,13 +35,14 @@ for (
     "gh-pages/assets/images/body-bg.png",
     "gh-pages/assets/images/highlight-bg.jpg",
     "gh-pages/assets/images/hr.png",
+    "gh-pages/assets/images/me-1a.png",
     "gh-pages/assets/images/octocat-icon.png",
     "gh-pages/assets/images/tar-gz-icon.png",
     "gh-pages/assets/images/top5.png",
     "gh-pages/assets/images/zip-icon.png",
 
-    "gh-pages/content-docs/about.md",
-    "gh-pages/content-docs/images/me-1a.png"
+    "gh-pages/content-docs/About/about.md",
+    "gh-pages/content-docs/About/release-notes.md"
 ) -> $rname {
   is $r.get-resource($rname), "$*CWD/resources/$rname", $rname;
 }
