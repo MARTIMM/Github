@@ -24,12 +24,9 @@ method create-gh-pages ( Str $src = 'docs' ) {
 
   # create directories and copy content
   mkdir 'images', 0o750 unless 'images'.IO ~~ :e;
-  
-  for ( "gh-pages/Gemfile",
+
+  for (
         "gh-pages/_config.yml",
-        "gh-pages/404.html",
-        "gh-pages/favicon.ico",
-        "gh-pages/index.md",
 
         "gh-pages/_data/about-nav.yml",
         "gh-pages/_data/about-sidebar.yml",
@@ -46,6 +43,8 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/_sass/jekyll-theme-tactile.scss",
         "gh-pages/_sass/rouge-base16-dark.scss",
 
+        "gh-pages/404.html",
+
         "gh-pages/assets/css/print.css",
         "gh-pages/assets/css/style.scss",
 
@@ -59,7 +58,11 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/assets/images/zip-icon.png",
 
         "gh-pages/content-docs/About/about.md",
-        "gh-pages/content-docs/About/release-notes.md"
+        "gh-pages/content-docs/About/release-notes.md",
+
+        "gh-pages/favicon.ico",
+        "gh-pages/Gemfile",
+        "gh-pages/index.md",
   ) -> $rname is copy {
     my $fname = $!resources.get-resource($rname);
     $rname ~~ s/^ .*? 'gh-pages' '/'? //;

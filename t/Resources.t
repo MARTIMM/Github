@@ -8,11 +8,7 @@ my Github::Resources $r .= new;
 dies-ok {$r.get-resource('no-dir/abc.def'); }, 'resource not found';
 
 for (
-    "gh-pages/Gemfile",
     "gh-pages/_config.yml",
-    "gh-pages/404.html",
-    "gh-pages/favicon.ico",
-    "gh-pages/index.md",
 
     "gh-pages/_data/about-nav.yml",
     "gh-pages/_data/about-sidebar.yml",
@@ -29,6 +25,8 @@ for (
     "gh-pages/_sass/jekyll-theme-tactile.scss",
     "gh-pages/_sass/rouge-base16-dark.scss",
 
+    "gh-pages/404.html",
+
     "gh-pages/assets/css/print.css",
     "gh-pages/assets/css/style.scss",
 
@@ -42,7 +40,11 @@ for (
     "gh-pages/assets/images/zip-icon.png",
 
     "gh-pages/content-docs/About/about.md",
-    "gh-pages/content-docs/About/release-notes.md"
+    "gh-pages/content-docs/About/release-notes.md",
+
+    "gh-pages/favicon.ico",
+    "gh-pages/Gemfile",
+    "gh-pages/index.md",
 ) -> $rname {
   is $r.get-resource($rname), "$*CWD/resources/$rname", $rname;
 }

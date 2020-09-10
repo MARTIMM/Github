@@ -2,7 +2,7 @@
   "name": "Github",
   "description": "Github tools",
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.1.4",
+  "version": "0.1.5",
   "authors": [ "Marcel Timmerman" ],
   "license": "Artistic-2.0",
   "depends": [ "CPAN::Uploader::Tiny", "JSON::Fast"],
@@ -12,11 +12,7 @@
     "Github::Resources": "lib/Github/Resources.pm6"
   },
   "resources": [
-    "gh-pages/Gemfile",
     "gh-pages/_config.yml",
-    "gh-pages/404.html",
-    "gh-pages/favicon.ico",
-    "gh-pages/index.md",
 
     "gh-pages/_data/about-nav.yml",
     "gh-pages/_data/about-sidebar.yml",
@@ -33,6 +29,8 @@
     "gh-pages/_sass/jekyll-theme-tactile.scss",
     "gh-pages/_sass/rouge-base16-dark.scss",
 
+    "gh-pages/404.html",
+
     "gh-pages/assets/css/print.css",
     "gh-pages/assets/css/style.scss",
 
@@ -46,7 +44,11 @@
     "gh-pages/assets/images/zip-icon.png",
 
     "gh-pages/content-docs/About/about.md",
-    "gh-pages/content-docs/About/release-notes.md"
+    "gh-pages/content-docs/About/release-notes.md",
+
+    "gh-pages/favicon.ico",
+    "gh-pages/Gemfile",
+    "gh-pages/index.md"
   ],
   "source-url": "git://github.com/MARTIMM/Github.git"
 }
