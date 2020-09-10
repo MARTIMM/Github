@@ -2,7 +2,7 @@
   "name": "Github",
   "description": "Github tools",
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.1.6",
+  "version": "0.1.7",
   "authors": [ "Marcel Timmerman" ],
   "license": "Artistic-2.0",
   "depends": [ "CPAN::Uploader::Tiny", "JSON::Fast"],
