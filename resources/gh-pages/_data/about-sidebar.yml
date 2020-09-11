@@ -4,7 +4,7 @@
   bar_menu:
   - title: "About"
     url: "/content-docs/About/about.html"
-  - title: "Change log"
+  - title: "Release Notes"
     url: "/content-docs/About/release-notes.html"
 
 #  - title: "Gnome::GDK3"
