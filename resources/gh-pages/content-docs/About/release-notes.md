@@ -1,6 +1,6 @@
 ---
 title: About MongoDB Driver
-nav_menu: about-nav
+nav_menu: default-nav
 sidebar_menu: about-sidebar
 layout: sidebar
 ---
