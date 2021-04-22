@@ -78,6 +78,8 @@ method create-gh-pages ( Str $src = 'docs' ) {
   shell "bundle config set path 'vendor/bundle'";
   shell "bundle install";
 
+  note "Now go to directory '$src' and run 'bundle exec jekyll serve'";
+
   # return to previous directory
   chdir $cwd;
 }
