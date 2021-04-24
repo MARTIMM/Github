@@ -83,22 +83,25 @@
 ## ----- [ end of defaults ] -----
 
 ## ----- [ your settings ] -----
-title: some title
-description: some description
-email: mt1957@gmail.com
-github_username: MARTIMM
+title: [[[TITLE]]]
+description: [[[DESCRIPTION]]]
+email: [[[EMAIL]]]
+port: [[[PORT]]]
+baseurl: [[[REPOSITORY]]]
 
+#github_username: MARTIMM
 #url: "https://martimm.github.io"
-#port: 4001
-#baseurl: "/"
 
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/
-#defaults:
-#  -
-#    scope:
-#      path: "content-docs/reference/Gtk3"
-#    values:
-#      layout: reference-page
-#      title: References to the Gtk3 package modules
-#      nav_menu: references-nav
-#      sidebar_menu: references-gtk3-sidebar
+# defaults are used for pages which do not have front matter. These are
+# mostly generated reference pages
+#
+defaults:
+  -
+    scope:
+      path: "content-docs/reference"
+    values:
+      title: References to the [[[REPOSITORY]]] package modules
+      layout: reference-page
+      nav_menu: references-nav
+      sidebar_menu: references-sidebar
