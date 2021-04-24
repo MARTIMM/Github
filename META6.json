@@ -5,17 +5,20 @@
   "version": "0.2.1",
   "authors": [ "Marcel Timmerman" ],
   "license": "Artistic-2.0",
+  "perl": "6.d",
+
   "depends": [
     "CPAN::Uploader::Tiny", "JSON::Fast", "Digest::SHA1::Native"
   ],
-  "perl": "6.d",
+
   "provides": {
-    "Github::App::Application": "lib/Github/App/Application.pm6",
-    "Github::App::GPConfig": "lib/Github/App/GPConfig.pm6",
-    "Github::App::MainWindow": "lib/Github/App/MainWindow.pm6",
-    "Github::Pages": "lib/Github/Pages.pm6",
-    "Github::Resources": "lib/Github/Resources.pm6"
+    "Github::App::Application": "lib/Github/App/Application.rakumod",
+    "Github::App::GPConfig": "lib/Github/App/GPConfig.rakumod",
+    "Github::App::MainWindow": "lib/Github/App/MainWindow.rakumod",
+    "Github::Pages": "lib/Github/Pages.rakumod",
+    "Github::Resources": "lib/Github/Resources.rakumod"
   },
+
   "resources": [
     "gh-pages/_config.yml",
 
@@ -60,5 +63,6 @@
     "github-logo.png",
     "github.gresource"
   ],
+  
   "source-url": "git://github.com/MARTIMM/Github.git"
 }
