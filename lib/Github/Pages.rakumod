@@ -28,16 +28,16 @@ method create-gh-pages ( Str $src = 'docs' ) {
   for (
         "gh-pages/_config.yml",
 
-        "gh-pages/_data/about-nav.yml",
         "gh-pages/_data/about-sidebar.yml",
         "gh-pages/_data/default-nav.yml",
-        "gh-pages/_data/main-sidebar.yml",
+        "gh-pages/_data/reference-sidebar.yml",
 
         "gh-pages/_includes/header-section.html",
         "gh-pages/_includes/sidebar-section.html",
 
         "gh-pages/_layouts/default.html",
         "gh-pages/_layouts/plain-text.html",
+        "gh-pages/_layouts/reference-page.html",
         "gh-pages/_layouts/sidebar.html",
 
         "gh-pages/_sass/jekyll-theme-tactile.scss",
@@ -57,8 +57,8 @@ method create-gh-pages ( Str $src = 'docs' ) {
         "gh-pages/assets/images/top5.png",
         "gh-pages/assets/images/zip-icon.png",
 
-        "gh-pages/content-docs/About/about.md",
-        "gh-pages/content-docs/About/release-notes.md",
+        "gh-pages/content-docs/about/about.md",
+        "gh-pages/content-docs/about/release-notes.md",
 
         "gh-pages/favicon.ico",
         "gh-pages/Gemfile",
