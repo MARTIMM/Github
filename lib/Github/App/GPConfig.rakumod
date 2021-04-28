@@ -1,9 +1,9 @@
 use v6.d;
 
 use Gnome::Gtk3::Dialog;
-use QA::Gui::SheetSimple;
+
+use QA::Gui::SheetNotebook;
 use QA::Types;
-#use Gnome::N::X;
 
 #-------------------------------------------------------------------------------
 unit class Github::App::GPConfig:auth<github:MARTIMM>:ver<0.1.0>;
@@ -21,7 +21,7 @@ submethod BUILD ( Str:D :$!sheet-name, Hash :$!user-data = %() ) {
 #-------------------------------------------------------------------------------
 method show-dialog ( --> Hash ) {
 
-  my QA::Gui::SheetSimple $sheet-dialog .= new(
+  my QA::Gui::SheetNotebook $sheet-dialog .= new(
     :$!sheet-name, :$!user-data, :show-cancel-warning, :!save-data
   );
 
@@ -37,5 +37,5 @@ method check-uint ( Str $input --> Any ) {
 #-------------------------------------------------------------------------------
 method check-email ( Str $input --> Any ) {
   "Email not properly specified"
-    unless $input ~~ m/^ <[.\-_\w]>+ '@' <[.\-_\w]>+ $/;
+    unless !$input or $input ~~ m/^ <[.\-_\w]>+ '@' <[.\-_\w]>+ $/;
 }
