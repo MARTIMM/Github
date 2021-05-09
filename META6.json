@@ -2,7 +2,7 @@
   "name": "Github",
   "description": "Github tools",
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.2.1",
+  "version": "0.2.2",
   "authors": [ "Marcel Timmerman" ],
   "license": "Artistic-2.0",
   "perl": "6.d",
@@ -45,10 +45,10 @@
     "gh-pages/assets/images/body-bg.png",
     "gh-pages/assets/images/highlight-bg.jpg",
     "gh-pages/assets/images/hr.png",
-    "gh-pages/assets/images/me-1a.png",
+    "gh-pages/assets/images/top-left-icon.png",
     "gh-pages/assets/images/octocat-icon.png",
     "gh-pages/assets/images/tar-gz-icon.png",
-    "gh-pages/assets/images/top5.png",
+    "gh-pages/assets/images/top.png",
     "gh-pages/assets/images/zip-icon.png",
 
     "gh-pages/content-docs/about/about.md",
@@ -63,6 +63,6 @@
     "github-logo.png",
     "github.gresource"
   ],
-  
+
   "source-url": "git://github.com/MARTIMM/Github.git"
 }
