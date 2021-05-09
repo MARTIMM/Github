@@ -18,6 +18,8 @@ $e.attribs<prefix> = '/io/github/martimm/github';
 
 my $*path-prefix = 'xbin/resource-data';
 add-file( $e, 'github-style', 'github-style.css', :compress);
+#add-file( $e, 'about-dialog', 'about-dialog.css', :compress);
+#add-file( $e, 'QA', 'QA.css', :compress);
 add-file( $e, 'app-menu', 'application-menu.xml', :compress, :strip);
 add-file( $e, 'help-about', 'about-dialog.xml', :compress, :strip);
 #add-file( $e, 'db-skip', 'db-skip-dialog.xml', :compress, :strip);

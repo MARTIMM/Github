@@ -1,4 +1,4 @@
-use v6;
+use v6.d;
 
 #-------------------------------------------------------------------------------
 unit class Github::Resources:auth<github:MARTIMM>;

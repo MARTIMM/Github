@@ -22,6 +22,7 @@ use Gnome::Gio::MenuModel;
 use Gnome::Gio::SimpleAction;
 
 use Github::App::GPConfig;
+use Github::Pages;
 
 #use Library::Gui::QA::DBFilters;
 #use Library::Gui::QA::DBConfig;
@@ -84,7 +85,7 @@ submethod BUILD ( :$!application, Version :$!app-version, Str :$!github-id ) {
   self.load-gui;
 
   self.setup-application-menu;
-  self.setup-application-style;
+  self.setup-application-style('github-style');
 
   self.set-title('Github Tools');
   self.set-border-width(2);
@@ -93,13 +94,15 @@ submethod BUILD ( :$!application, Version :$!app-version, Str :$!github-id ) {
   self.set-size-request( 400, 450);
 
   my Gnome::Glib::Error $e = self.set-icon-from-file(
-#    %?RESOURCES<github-logo.png>.Str
-    'Old/window-icon.jpg'
+    %?RESOURCES<github-logo.png>.Str
   );
   die $e.message if $e.is-valid;
 
   $!grid .= new;
+  #$!grid.buildable-set-name('main-grid');
+
   self.add($!grid);
+  #self.buildable-set-name('main-window');
 
   self.show-all;
 }
@@ -118,12 +121,13 @@ method load-gui ( ) {
 }
 
 #-------------------------------------------------------------------------------
-method setup-application-style ( ) {
+method setup-application-style ( Str $resource-name ) {
 
+note "set style $resource-name";
   # read the style definitions into the css provider and style context
   my Gnome::Gtk3::CssProvider $css-provider .= new;
-  $css-provider.load-from-resource("$!app-rbpath/github-style");
-note 'scc v: ', $css-provider.is-valid;
+  $css-provider.load-from-resource("$!app-rbpath/$resource-name");
+
   my Gnome::Gtk3::StyleContext $style-context .= new;
   $style-context.add_provider_for_screen(
     Gnome::Gdk3::Screen.new, $css-provider, GTK_STYLE_PROVIDER_PRIORITY_USER
@@ -182,6 +186,7 @@ note "Map action $action.fmt('%-20.20s') with state $state ~~~> .$method\()";
   $simple-action.clear-object;
 }
 
+#`{{
 #-------------------------------------------------------------------------------
 method link-action ( Str:D $action, Str :$method is copy ) {
 
@@ -194,6 +199,7 @@ note "Map action $action.fmt('%-20.20s') ~~~> .$method\()";
   $!application.add-action($simple-action);
   $simple-action.clear-object;
 }
+}}
 
 #--[ signal handlers ]----------------------------------------------------------
 
@@ -220,6 +226,7 @@ method config-gp ( N-GObject $n-parameter ) {
     :sheet-name<gp-config>, :user-data($gp-config)
   );
 
+  #self.setup-application-style('QA');
   $gp-config = $gpc.show-dialog;
 
   # after return save the data
@@ -238,65 +245,13 @@ method config-gp ( N-GObject $n-parameter ) {
 # Github Pages > Generate
 method generate-gp ( N-GObject $n-parameter ) {
   note "Selected 'Generate' from 'Github Pages' menu";
+
+  my QA::Types $qa-types .= instance;
+  my Str $filename = sha1-hex($*CWD.Str);
+  my Hash $gp-config = $qa-types.qa-load( $filename, :userdata);
+  my Github::Pages $pages .= new;
+  $pages.create-gh-pages($gp-config);
 }
-
-#`{{
-#-------------------------------------------------------------------------------
-# Database > Edit Skip
-method db-skip ( N-GObject $n-parameter ) {
-  note "Selected 'Edit Skip' from 'Database' menu";
-}
-}}
-
-#`{{
-#-------------------------------------------------------------------------------
-# Database > Configure database
-method db-config ( N-GObject $n-parameter ) {
-  note "Selected 'Configure database' from 'Application' menu";
-  my Library::Gui::QA::DBConfig $df .= new(:sheet-name<client-config>);
-
-  my Hash $db-config = $df.show-dialog;
-  note $db-config.gist;
-}
-
-#-------------------------------------------------------------------------------
-# Database > Edit Tag
-method db-filters ( N-GObject $n-parameter ) {
-
-  note "Selected 'Edit Filters' from 'Database' menu";
-  if ?$!db {
-    my BSON::Document $query .= new(
-      config-type => "tag-filter"
-    my Library::Gui::QA::DBFilters $df .= new(
-      :sheet-name<tag-skip-filter-config>, :$!db
-    );
-
-    $df.show-dialog;
-  }
-
-  else {
-    self!show-msg(Q:to/EOMSG/);
-      Cannot retrieve data from database,
-      Please select <i>Connect</i> from the
-      <i>Database</i> menu
-      EOMSG
-  }
-}
-
-#-------------------------------------------------------------------------------
-# Database > Connect
-method connect-db ( N-GObject $n-parameter ) {
-  $!db .= new;
-  $!db.connect;
-}
-
-#-------------------------------------------------------------------------------
-# Database > Disconnect
-method disconnect-db ( N-GObject $n-parameter ) {
-  $!db.cleanup;
-  $!db = Nil;
-}
-}}
 
 #-------------------------------------------------------------------------------
 # Help > About
@@ -309,11 +264,10 @@ method help-about ( N-GObject $n-parameter ) {
   # Getting some ideas to show different UML images of what program does.
   # Using some scratch images now…
   my Gnome::Gdk3::Pixbuf $pix .= new(
-    :file("Old/I/p{5.rand.Int}.jpg")
-#    :file(%?RESOURCES{"library-overview0{4.rand.Int}.png"}.Str)
-#    :file<%?RESOURCES<library-logo.png>.Str>, :width(100), :height(100)
+    :file(%?RESOURCES<github-logo.png>.Str), :width(200), :height(200)
   );
   $about.set-logo($pix);
+  #self.setup-application-style('about-dialog');
   $about.run;
   $about.hide;  # cannot destroy, builder keeps same native-object
 }
