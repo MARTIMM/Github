@@ -172,18 +172,23 @@ method gp-assets-set ( ) {
   $set .= new(:set-name<images>);
   $set.description = "Images for background and other purposes";
 
-  $question .= new(:name<top-image>);
+  $question .= new(:name<top>);
   $question.description = 'Image placed at the top. It should be very wide and about 100 px high';
   $question.fieldtype = QAImage;
   $set.add-question($question);
 
   $question .= new(:name<top-left-icon>);
-  $question.description = 'Image placed at the top left. It should be a logo of some sort';
+  $question.description = 'Image placed at the top left over the top image. It should be a logo of some sort';
   $question.fieldtype = QAImage;
   $set.add-question($question);
 
+#  $question .= new(:name<top-image>);
+#  $question.description = 'Upper body part';
+#  $question.fieldtype = QAImage;
+#  $set.add-question($question);
+
   $question .= new(:name<body-tile>);
-  $question.description = 'Image to tile the body with';
+  $question.description = 'Lower part body tile';
   $question.fieldtype = QAImage;
   $set.add-question($question);
 
