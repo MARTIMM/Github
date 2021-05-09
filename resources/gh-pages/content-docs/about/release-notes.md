@@ -1,5 +1,5 @@
 ---
-title: About MongoDB Driver
+title: Release Notes
 nav_menu: default-nav
 sidebar_menu: about-sidebar
 layout: sidebar

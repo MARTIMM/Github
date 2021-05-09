@@ -6,11 +6,11 @@ nav_menus:
     - title: "Home"
       url: '/'
     - title: "Reference"
-      url: "/content-docs/about/Reference.html"
+      url: "/content-docs/reference/reference.html"
 #      right: true
     - title: "About"
       url: "/content-docs/about/about.html"
-#      right: true
+      right: true
 
 #    - title: "Projects"
 #      url: "/content-docs/projects.html"

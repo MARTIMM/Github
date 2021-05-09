@@ -87,7 +87,7 @@ title: [[[TITLE]]]
 description: [[[DESCRIPTION]]]
 email: [[[EMAIL]]]
 port: [[[PORT]]]
-baseurl: [[[REPOSITORY]]]
+baseurl: /[[[REPOSITORY]]]
 
 #github_username: MARTIMM
 #url: "https://martimm.github.io"

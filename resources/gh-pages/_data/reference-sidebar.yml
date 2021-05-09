@@ -1,9 +1,11 @@
 # https://jekyllrb.com/tutorials/navigation/
 
-#- bar_title: " "
-#  bar_menu:
-#  - title: " "
-#    url: " "
+- bar_title: My Modules
+  bar_menu:
+  - title: MyModule1
+    url: /content-docs/reference/MyModule1.html
+  - title: MyModule2
+    url: /content-docs/reference/MyModule2.html
 
 #- bar_title: " "
 #  bar_menu:
