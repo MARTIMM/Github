@@ -15,3 +15,6 @@ There are not many tools yet. The tools are Rake scripts and made for my specifi
   **Dependencies**;
   * Style of theme, background image etc. You must change that to have your own theme.
   * Need to have Ruby installed and bundle.
+
+# Attribution :smile:
+* Free images from [myfreetextures](https://www.myfreetextures.com/). [Its license](https://www.myfreetextures.com/use-license/).
