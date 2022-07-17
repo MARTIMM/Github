@@ -5,6 +5,10 @@ use Test;
 use Github::Resources;
 my Github::Resources $r .= new;
 
+#-------------------------------------------------------------------------------
+done-testing;
+=finish
+
 dies-ok {$r.get-resource('no-dir/abc.def'); }, 'resource not found';
 
 for (
