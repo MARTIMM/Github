@@ -20,27 +20,25 @@ $date ~~ s/ \. .* / Z/;
 $date ~~ s/ T / /;
 
 #-------------------------------------------------------------------------------
-sub MAIN ( *@p6-dirs is copy ) {
+# Do check on the name of the main branch. Formerly this was 'master'. Git
+# proposed a change from the use of the names master and slave which are
+# negative in the view of the history of mankind. I will use the name 'main'
+# so took this as a default.
+sub MAIN ( Str $raku-dir, Str :$main-branch = 'main' ) {
 
   %git-archive-CPAN = from-json($git-archive-config.IO.slurp // '')
     if $git-archive-config.IO.r;
 
-  @p6-dirs //= ();
-
-  for @p6-dirs -> $p6-dir {
-    next unless "$p6-dir".IO.d;
-
-    # Check for a Meta file and if there is a git directory
-    if "$p6-dir/META6.json".IO.r and "$p6-dir/.git".IO.d {
-      archive($p6-dir);
-    }
+  # Check for a Meta file and if there is a git directory
+  if "$raku-dir/META6.json".IO.r and "$raku-dir/.git".IO.d {
+    archive( $raku-dir, $main-branch);
   }
 
   $git-archive-config.IO.spurt(to-json(%git-archive-CPAN));
 }
 
 #-------------------------------------------------------------------------------
-sub archive ( Str $p6-dir is copy ) {
+sub archive ( Str $p6-dir is copy, Str $main-branch ) {
 
   # remove trailing slash if any
   $p6-dir ~~ s/ '/' $ //;
@@ -56,7 +54,7 @@ sub archive ( Str $p6-dir is copy ) {
   #$version ~~ s/ \. \d+ $ // while $version.comb(/\./).join.chars > 2;
 
   my Str $archiveName = "$p6-dir-$version";
-  my Int $checks = check-git( $p6-dir, $version);
+  my Int $checks = check-git( $p6-dir, $version, $main-branch);
   if $checks {
     note "You're not on the master branch" if $checks +& NotMaster;
     note "There are new uncommitted files" if $checks +& NewFiles;
@@ -102,14 +100,14 @@ sub archive ( Str $p6-dir is copy ) {
 }
 
 #-------------------------------------------------------------------------------
-sub check-git ( Str $p6-dir, Str $version --> Int ) {
+sub check-git ( Str $p6-dir, Str $version, Str $main-branch --> Int ) {
 
   my Int $checks = 0;
   my Bool ( $current-is-master, $untracked, $changes) = ( False, False, False);
 
   my Proc $p = run 'git', 'branch', :out;
   for $p.out.lines -> $line {
-    if $line ~~ m:s/^ '*' master / {
+    if $line ~~ m:s/^ '*' $main-branch / {
       $current-is-master = True;
       last
     }
