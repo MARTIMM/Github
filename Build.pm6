@@ -17,6 +17,8 @@ has Str $!dist-path;
 
 #-------------------------------------------------------------------------------
 method build ( Str $!dist-path --> Int ) {
+#TODO
+return 1;
 
 #note $!dist-path;
   self.make-sheets;
@@ -87,6 +89,7 @@ method gp-config-sheet ( ) {
 
 #-------------------------------------------------------------------------------
 method gp-property-sets ( ) {
+
   my QA::Set $set;
   my QA::Question $question;
 
@@ -114,6 +117,8 @@ method gp-property-sets ( ) {
   $question.description = 'Port of the local website';
   $question.default = 40000;
   $question.callback = 'is-uint';
+
+note $question.keys.join(', ');
   $question.example = '40000';
   $set.add-question($question);
 

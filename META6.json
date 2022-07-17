@@ -2,8 +2,9 @@
   "name": "Github",
   "description": "Github tools",
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.2.2",
+  "version": "0.2.4",
   "authors": [ "Marcel Timmerman" ],
+  "auth": "github:MARTIMM",
   "license": "Artistic-2.0",
   "perl": "6.d",
 
@@ -18,6 +19,10 @@
     "Github::Pages": "lib/Github/Pages.rakumod",
     "Github::Resources": "lib/Github/Resources.rakumod"
   },
+
+  "Xresources": [
+      "gh-pages/404.html",
+  ],
 
   "resources": [
     "gh-pages/_config.yml",
@@ -37,7 +42,7 @@
     "gh-pages/_sass/jekyll-theme-tactile.scss",
     "gh-pages/_sass/rouge-base16-dark.scss",
 
-    "gh-pages/404.html",
+    "gh-pages/404.md",
 
     "gh-pages/assets/css/print.css",
     "gh-pages/assets/css/style.scss",
