@@ -3,16 +3,10 @@ use v6;
 #-------------------------------------------------------------------------------
 use Gnome::N::N-GObject;
 
-use Gnome::Gdk3::Pixbuf;
-use Gnome::Gdk3::Screen;
-
-use Gnome::Glib::Error;
-use Gnome::Glib::VariantType;
-
 use Gnome::Gtk3::Builder;
-use Gnome::Gtk3::ApplicationWindow;
 use Gnome::Gtk3::AboutDialog;
 use Gnome::Gtk3::Grid;
+use Gnome::Gtk3::ApplicationWindow;
 use Gnome::Gtk3::Window;
 use Gnome::Gtk3::CssProvider;
 use Gnome::Gtk3::StyleContext;
@@ -20,6 +14,12 @@ use Gnome::Gtk3::StyleProvider;
 
 use Gnome::Gio::MenuModel;
 use Gnome::Gio::SimpleAction;
+
+use Gnome::Gdk3::Pixbuf;
+use Gnome::Gdk3::Screen;
+
+use Gnome::Glib::Error;
+use Gnome::Glib::VariantType;
 
 use Github::App::GPConfig;
 use Github::Pages;

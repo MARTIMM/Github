@@ -2,7 +2,7 @@ use v6.d;
 
 use Gnome::Gtk3::Dialog;
 
-use QA::Gui::SheetNotebook;
+use QA::Gui::PageNotebook;
 use QA::Types;
 
 #-------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ submethod BUILD ( Str:D :$!sheet-name, Hash :$!user-data = %() ) {
 #-------------------------------------------------------------------------------
 method show-dialog ( --> Hash ) {
 
-  my QA::Gui::SheetNotebook $sheet-dialog .= new(
+  my QA::Gui::PageNotebook $sheet-dialog .= new(
     :$!sheet-name, :$!user-data, :show-cancel-warning, :!save-data
   );
 

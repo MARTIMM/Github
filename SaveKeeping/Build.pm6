@@ -1,6 +1,6 @@
 use v6;
 
-use QA::Sheet;
+use QA::Page;
 use QA::Set;
 use QA::Question;
 use QA::Types;
@@ -59,7 +59,7 @@ method gp-config-sheet ( ) {
   self.gp-property-sets;
   self.gp-assets-set;
 
-  my QA::Sheet $sheet .= new(:sheet-name<gp-config>);
+  my QA::Page $sheet .= new(:sheet-name<gp-config>);
 
   $sheet.width = 400;
   $sheet.height = 450;
@@ -231,7 +231,7 @@ method tag-skip-filter-sheet ( ) {
   self.tag-filter-set;
   self.skip-filter-set;
 
-  my QA::Sheet $sheet .= new(:sheet-name<tag-skip-filter-config>);
+  my QA::Page $sheet .= new(:sheet-name<tag-skip-filter-config>);
 #  $sheet.remove;
 
   $sheet.width = 525;
