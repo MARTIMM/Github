@@ -1,18 +1,21 @@
 {
   "name": "Github",
   "description": "Github tools",
+
   "tags": [ "git", "tar", "cpan", "gh-pages", "github" ],
-  "version": "0.2.4",
+  "version": "0.2.5",
+
   "authors": [ "Marcel Timmerman" ],
   "auth": "github:MARTIMM",
+
   "license": "Artistic-2.0",
-  "perl": "6.d",
+  "perl": "6",
 
   "depends": [
-    "CPAN::Uploader::Tiny", "JSON::Fast", "Digest::SHA1::Native"
+    "QA", "CPAN::Uploader::Tiny", "JSON::Fast", "Digest::SHA1::Native"
   ],
 
-  "provides": {
+  "Xprovides": {
     "Github::App::Application": "lib/Github/App/Application.rakumod",
     "Github::App::GPConfig": "lib/Github/App/GPConfig.rakumod",
     "Github::App::MainWindow": "lib/Github/App/MainWindow.rakumod",
@@ -21,10 +24,10 @@
   },
 
   "Xresources": [
-      "gh-pages/404.html",
+      "gh-pages/404.html"
   ],
 
-  "resources": [
+  "Yresources": [
     "gh-pages/_config.yml",
 
     "gh-pages/_data/about-sidebar.yml",
@@ -49,9 +52,9 @@
 
     "gh-pages/assets/images/body-bg.png",
     "gh-pages/assets/images/highlight-bg.jpg",
-    "gh-pages/assets/images/hr.png",
-    "gh-pages/assets/images/top-left-icon.png",
+    "gh-pages/assets/images/hrule.png",
     "gh-pages/assets/images/octocat-icon.png",
+    "gh-pages/assets/images/top-left-icon.png",
     "gh-pages/assets/images/tar-gz-icon.png",
     "gh-pages/assets/images/top.png",
     "gh-pages/assets/images/zip-icon.png",
