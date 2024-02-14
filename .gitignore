@@ -8,3 +8,4 @@ start_jeckyll.sh
 *.log
 t/docs/*
 t/my-basic-stuff/*
+github-pages/*
