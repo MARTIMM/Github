@@ -1,12 +1,12 @@
-#!/usr/bin/env -S raku -I lib
+#!/usr/bin/env raku
 
-use v6;
+use v6.d;
 use JSON::Fast;
 use CPAN::Uploader::Tiny;
 
 #-------------------------------------------------------------------------------
 enum gitChecks (
-  NotMaster => 0x01,
+  NotMain => 0x01,
   NewFiles => 0x02,
   HasChanges => 0x04,
   AtCPAN => 0x08,
@@ -20,7 +20,7 @@ $date ~~ s/ \. .* / Z/;
 $date ~~ s/ T / /;
 
 #-------------------------------------------------------------------------------
-# Do check on the name of the main branch. Formerly this was 'master'. Git
+# Do check on the name of the 'main' branch. Formerly this was 'master'. Git
 # proposed a change from the use of the names master and slave which are
 # negative in the view of the history of mankind. I will use the name 'main'
 # so took this as a default.
@@ -56,7 +56,7 @@ sub archive ( Str $p6-dir is copy, Str $main-branch ) {
   my Str $archiveName = "$p6-dir-$version";
   my Int $checks = check-git( $p6-dir, $version, $main-branch);
   if $checks {
-    note "You're not on the master branch" if $checks +& NotMaster;
+    note "You're not on the main branch" if $checks +& NotMain;
     note "There are new uncommitted files" if $checks +& NewFiles;
     note "There are uncommitted changes" if $checks +& HasChanges;
     note "Already uploaded $archiveName to CPAN" if $checks +& AtCPAN;
@@ -114,7 +114,7 @@ sub check-git ( Str $p6-dir, Str $version, Str $main-branch --> Int ) {
   }
   $p.out.close;
 
-  $checks +|= NotMaster unless $current-is-master;
+  $checks +|= NotMain unless $current-is-master;
 
   $p = run 'git', 'status', :out;
   for $p.out.lines -> $line {
